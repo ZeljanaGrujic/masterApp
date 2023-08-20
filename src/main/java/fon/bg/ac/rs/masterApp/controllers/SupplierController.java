@@ -21,9 +21,9 @@ public class SupplierController {
 //    private LocationServiceImpl locationServiceImpl;
 //
 //
-//    @GetMapping("/suppliers")
-//    public String getSuppliers(Model model) {
-//
+    @GetMapping("/suppliers")
+    public String getSuppliers(Model model) {
+
 //        List<LocationDto> locations = locationServiceImpl.getLocations();
 //        List<SupplierDto> suppliers=supplierServiceImpl.getSuppliers();
 //        System.out.println(locations);
@@ -34,9 +34,9 @@ public class SupplierController {
 //        }else {
 //            model.addAttribute("suppliers", suppliers);
 //        }
-//        //ovaj model saljem ka HTML stranici
-//        return "Supplier";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "Supplier";
+    }
 //
 //    @PostMapping("/suppliers/addNew")
 //    public String addBew(SupplierDto supplier) {

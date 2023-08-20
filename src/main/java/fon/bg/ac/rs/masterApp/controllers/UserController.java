@@ -16,9 +16,9 @@ public class UserController {
 
 //    @Autowired
 //    private UserServiceImpl userServiceImpl;
-//    @GetMapping("/users")
-//    public String getUsers(Model model) {
-//
+    @GetMapping("/users")
+    public String getUsers(Model model) {
+
 //        List<User> users=userServiceImpl.getUsers();
 //        if(users.isEmpty()){
 //            model.addAttribute("users", null);
@@ -27,9 +27,9 @@ public class UserController {
 //            model.addAttribute("users", users);
 //        }
 //        //ovaj model saljem ka HTML stranici
-//
-//        return "User";
-//    }
+
+        return "User";
+    }
 //
 //    @PostMapping(value="users/addNew")
 //    public RedirectView addNew(User user) {

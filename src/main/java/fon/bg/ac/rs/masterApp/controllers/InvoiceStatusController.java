@@ -15,15 +15,20 @@ public class InvoiceStatusController {
 //    @Autowired
 //    private InvoiceStatusServiceImpl invoiceStatusServiceImpl;
 //
-//    @GetMapping("/invoiceStatuses")
-//    public String getInvoiceStatus(Model model) {
-//
+    @GetMapping("/invoiceStatuses")
+    public String getInvoiceStatus(Model model) {
+
 //        List<InvoiceStatusDto> invoiceStatuses = invoiceStatusServiceImpl.getInvoiceStatuses();
 //        System.out.println(invoiceStatuses);
 //        model.addAttribute("invoiceStatuses", invoiceStatuses);
-//        //ovaj model saljem ka HTML stranici
-//        return "InvoiceStatus";
-//    }
+//        if(invoiceStatuses.isEmpty()){
+//            model.addAttribute("invoiceStatuses", null);
+//        }else {
+//            model.addAttribute("invoiceStatuses", invoiceStatuses);
+//        }
+        //ovaj model saljem ka HTML stranici
+        return "InvoiceStatus";
+    }
 //    @PostMapping("/invoiceStatuses/addNew")
 //    public String addBew(InvoiceStatusDto invoiceStatus) {
 //        InvoiceStatusDto savedinvoiceStatuses = invoiceStatusServiceImpl.saveInvoiceStatus(invoiceStatus);

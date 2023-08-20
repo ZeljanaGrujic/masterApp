@@ -17,9 +17,9 @@ public class JobTitleController {
 //    private JobTitleServiceImpl jobTitleServiceImpl;
 //
 //
-//    @GetMapping("/jobTitles")
-//    public String getJobTitles(Model model) {
-//
+    @GetMapping("/jobTitles")
+    public String getJobTitles(Model model) {
+
 //        List<JobTitleDto> jobTitles = jobTitleServiceImpl.getJobTitles();
 //        if(jobTitles.isEmpty()){
 //            model.addAttribute("jobTitles", null);
@@ -27,9 +27,9 @@ public class JobTitleController {
 //            System.out.println(jobTitles);
 //            model.addAttribute("jobTitles", jobTitles);
 //        }
-//        //ovaj model saljem ka HTML stranici
-//        return "JobTitle";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "JobTitle";
+    }
 //
 //    @PostMapping("/jobTitles/addNew")
 //    public String addBew(JobTitleDto jobTitle) {

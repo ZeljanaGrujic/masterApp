@@ -31,9 +31,9 @@ public class InvoiceSellingController {
 //    @Autowired
 //    private InvoiceItemServiceImpl invoiceItemServiceImpl;
 //
-//    @GetMapping("/invoicesSelling")
-//    public String getInvoicesSelling(Model model) {
-//
+    @GetMapping("/invoicesSelling")
+    public String getInvoicesSelling(Model model) {
+
 //        List<InvoiceSellingDto> invoiceSellings = invoiceSellingServiceImpl.getInvoicesSelling();
 //        List<ClientDto> clients = clientServiceImpl.getClients();
 //        List<InvoiceStatusDto> invoiceStatuses = invoiceStatusServiceImpl.getInvoiceStatuses();
@@ -48,9 +48,9 @@ public class InvoiceSellingController {
 //
 //        model.addAttribute("clients", clients);
 //        model.addAttribute("invoiceStatuses", invoiceStatuses);
-//        //ovaj model saljem ka HTML stranici
-//        return "InvoiceSelling";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "InvoiceSelling";
+    }
 //
 //    @PostMapping("/invoicesSelling/addNew")
 //    public String addBew(InvoiceSellingDto invoiceSelling) {

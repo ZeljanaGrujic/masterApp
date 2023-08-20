@@ -21,9 +21,9 @@ public class ProfileController {
 //    @Autowired
 //    private UserServiceImpl userServiceImpl;
 //
-//    @RequestMapping(value = "/myProfile", method = RequestMethod.GET)
-//    public String profile(Model model, Principal principal) {
-//
+    @RequestMapping(value = "/myProfile", method = RequestMethod.GET)
+    public String profile(Model model, Principal principal) {
+
 //        String username = principal.getName();
 //        Employee empProfile = new Employee();
 //                empProfile=employeeServiceImpl.findByUsername(username);
@@ -37,8 +37,8 @@ public class ProfileController {
 //
 //            model.addAttribute("myProfile", empProfile);
 //            System.out.println(empProfile);
-//
-//        //vraca username ulogovanog korisnika
-//        return "profile";
-//    }
+
+        //vraca username ulogovanog korisnika
+        return "profile";
+    }
 }

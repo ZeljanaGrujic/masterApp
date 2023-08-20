@@ -32,9 +32,9 @@ public class InvoiceBuyingController {
 //    private InvoiceBItemServiceImpl invoiceBItemServiceImpl;
 //
 //
-//    @GetMapping("/invoicesBuying")
-//    public String getInvoicesBuying(Model model) {
-//
+    @GetMapping("/invoicesBuying")
+    public String getInvoicesBuying(Model model) {
+
 //        List<InvoiceBuyingDto> invoiceBuyings = invoiceBuyingServiceImpl.getInvoicesBuying();
 //        List<SupplierDto> suppliers=supplierServiceImpl.getSuppliers();
 //        List<InvoiceStatusDto>invoiceStatuses=invoiceStatusServiceImpl.getInvoiceStatuses();
@@ -50,10 +50,10 @@ public class InvoiceBuyingController {
 //
 //        model.addAttribute("suppliers", suppliers);
 //        model.addAttribute("invoiceStatuses", invoiceStatuses);
-////        model.addAttribute("textiles", textiles);
-//        //ovaj model saljem ka HTML stranici
-//        return "InvoiceBuying";
-//    }
+//        model.addAttribute("textiles", textiles);
+        //ovaj model saljem ka HTML stranici
+        return "InvoiceBuying";
+    }
 //
 //    @PostMapping("/invoicesBuying/addNew")
 //    public String addBew(InvoiceBuyingDto invoiceBuying) {

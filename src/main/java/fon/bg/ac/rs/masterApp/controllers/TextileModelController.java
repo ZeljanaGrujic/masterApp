@@ -12,18 +12,24 @@ import java.util.List;
 @Controller
 public class TextileModelController {
 
-//    @Autowired
+    //    @Autowired
 //    private TextileModelServiceImpl textileModelServiceImpl;
 //
-//    @GetMapping("/textileModels")
-//    public String getTextileTypes(Model model) {
-//
+    @GetMapping("/textileModels")
+    public String getTextileTypes(Model model) {
+
 //        List<TextileModelDto> textileModels = textileModelServiceImpl.getTextileModels();
 //        System.out.println(textileModels);
 //        model.addAttribute("textileModels", textileModels);
 //        //ovaj model saljem ka HTML stranici
-//        return "TextileModel";
-//    }
+//        if (textileModels.isEmpty()) {
+//            model.addAttribute("textileModels", null);
+//        } else {
+//            model.addAttribute("textileModels", textileModels);
+//        }
+
+        return "TextileModel";
+    }
 //
 //    @PostMapping("/textileModels/addNew")
 //    public String addBew(TextileModelDto textileModel) {

@@ -31,8 +31,8 @@ public class EmployeeController {
 //    @Autowired
 //    private CountryServiceImpl countryServiceImpl;
 //
-//    @GetMapping("/employees")
-//    public String getEmployees(Model model) {
+    @GetMapping("/employees")
+    public String getEmployees(Model model) {
 //        List<Employee> employees = employeeServiceImpl.getEmployees();
 //        List<EmployeeTypeDto> employeeTypes = employeeTypeServiceImpl.getEmployeeTypes();
 //        List<JobTitleDto> jobTitles = jobTitleServiceImpl.getJobTitles();
@@ -54,10 +54,10 @@ public class EmployeeController {
 //        model.addAttribute("jobTitles", jobTitles);
 //        model.addAttribute("locations", locations);
 //        model.addAttribute("countries", countries);
-//
-//        //ovaj model saljem ka HTML stranici
-//        return "Employee";
-//    }
+
+        //ovaj model saljem ka HTML stranici
+        return "Employee";
+    }
 //
 //    @PostMapping("/employees/addNew")
 //    public String addBew(Employee employee) {

@@ -19,16 +19,18 @@ public class CountryController {
 //    @Autowired
 //    private LocationServiceImpl locationServiceImpl;
 //
-//    @GetMapping("/countries")
-//    public String getCountries(Model model) {
-//
+    @GetMapping("/countries")
+    public String getCountries(Model model) {
+
 //        List<CountryDto> countries = countryServiceImpl.getCountries();
 //        System.out.println(countries);
 //        model.addAttribute("countries", countries);
-//        //ovaj model saljem ka HTML stranici
-////        fillLocations();
-//        return "Country";
-//    }
+
+
+        //ovaj model saljem ka HTML stranici
+//        fillLocations();
+        return "Country";
+    }
 //
 //    @PostMapping("/countries/addNew")
 //    public String addBew(CountryDto country) {

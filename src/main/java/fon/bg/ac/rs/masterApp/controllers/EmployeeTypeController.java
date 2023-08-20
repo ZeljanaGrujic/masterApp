@@ -16,15 +16,21 @@ public class EmployeeTypeController {
 //    private EmployeeTypeServiceImpl employeeTypeServiceImpl;
 //
 //
-//    @GetMapping("/employeeTypes")
-//    public String getEmployeeTypes(Model model) {
-//
+    @GetMapping("/employeeTypes")
+    public String getEmployeeTypes(Model model) {
+
 //        List<EmployeeTypeDto> employeeTypes = employeeTypeServiceImpl.getEmployeeTypes();
 //        System.out.println(employeeTypes);
 //        model.addAttribute("employeeTypes", employeeTypes);
-//        //ovaj model saljem ka HTML stranici
-//        return "EmployeeType";
-//    }
+//        if(employeeTypes.isEmpty()){
+//            model.addAttribute("employeeTypes", null);
+//        }else {
+//            model.addAttribute("employeeTypes", employeeTypes);
+//        }
+
+        //ovaj model saljem ka HTML stranici
+        return "EmployeeType";
+    }
 //
 //    @PostMapping("/employeeTypes/addNew")
 //    public String addBew(EmployeeTypeDto employeeType) {

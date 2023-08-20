@@ -19,9 +19,9 @@ public class LocationController {
 //
 //    @Autowired
 //    private CountryServiceImpl countryServiceImpl;
-//    @GetMapping("/locations")
-//    public String getLocations(Model model) {
-//
+    @GetMapping("/locations")
+    public String getLocations(Model model) {
+
 //        List<LocationDto> locations = locationServiceImpl.getLocations();
 //        List<CountryDto> countries=countryServiceImpl.getCountries();
 //        System.out.println(locations);
@@ -32,9 +32,11 @@ public class LocationController {
 //            model.addAttribute("locations", locations);
 //        }
 //        model.addAttribute("countries", countries);
-//        //ovaj model saljem ka HTML stranici
-//        return "Location";
-//    }
+
+
+        //ovaj model saljem ka HTML stranici
+        return "Location";
+    }
 //
 //    @PostMapping("/locations/addNew")
 //    public String addBew(LocationDto location) {

@@ -17,18 +17,18 @@ public class ContactController {
     private ContactServiceImpl contactServiceImpl;
 
 
-//    @GetMapping("/contacts")
-//    public String getContactss(Model model) {
-//
+    @GetMapping("/contacts")
+    public String getContactss(Model model) {
+
 //        List<ContactDto> contacts=contactServiceImpl.getContacts();
 //        if(contacts.isEmpty()) {
 //            model.addAttribute("contacts", null);
 //        }else {
 //            model.addAttribute("contacts", contacts);
 //        }
-//        //ovaj model saljem ka HTML stranici
-//        return "MyContact";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "MyContact";
+    }
 //
 //    @PostMapping("/contacts/addNew")
 //    public String addBew(ContactDto contact) {

@@ -1,6 +1,7 @@
-package fon.bg.ac.rs.masterApp.servicesImpl;
-
+//package fon.bg.ac.rs.masterApp.servicesImpl;
+//
 //import fon.bg.ac.rs.masterApp.models.User;
+//import fon.bg.ac.rs.masterApp.models.UserPrincipal;
 //import fon.bg.ac.rs.masterApp.repositories.UserRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetails;

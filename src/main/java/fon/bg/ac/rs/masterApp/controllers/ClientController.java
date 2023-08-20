@@ -22,9 +22,9 @@ public class ClientController {
 //    public LocationServiceImpl locationServiceImpl;
 //
 //
-//    @GetMapping("/clients")
-//    public String getClients(Model model) {
-//
+    @GetMapping("/clients")
+    public String getClients(Model model) {
+
 //        List<LocationDto> locations = locationServiceImpl.getLocations();
 //        List<ClientDto> clients = clientServiceImpl.getClients();
 //        System.out.println(locations);
@@ -35,9 +35,9 @@ public class ClientController {
 //        }else {
 //            model.addAttribute("clients", clients);
 //        }
-//        //ovaj model saljem ka HTML stranici
-//        return "Client";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "Client";
+    }
 //
 //    @PostMapping("/clients/addNew")
 //    public String addBew(ClientDto client) {

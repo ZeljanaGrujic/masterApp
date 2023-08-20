@@ -36,9 +36,9 @@ public class TextileController {
 //
 //    @Autowired
 //    private InvoiceSellingServiceImpl invoiceSellingServiceImpl;
-//    @GetMapping("/textiles")
-//    public String getTextiles(Model model) {
-//
+    @GetMapping("/textiles")
+    public String getTextiles(Model model) {
+
 //        List<TextileDto> textiles = textileServiceImpl.getTextiles();
 //        List<TextileTypeDto> textileTypes=textileTypeServiceImpl.getTextileTypes();
 //        List<TextileMakeDto> textileMakes = textileMakeServiceImpl.getTextileMakes();
@@ -64,14 +64,14 @@ public class TextileController {
 //        model.addAttribute("textileStatuses", textileStatuses);
 //        model.addAttribute("employees", employees);
 //        model.addAttribute("suppliers", suppliers);
-//        //ovaj model saljem ka HTML stranici
-//        return "Textile";
-//    }
-//
-//
-//    @GetMapping("/textilesUser")
-//    public String getTextilesUser(Model model) {
-//
+        //ovaj model saljem ka HTML stranici
+        return "Textile";
+    }
+
+
+    @GetMapping("/textilesUser")
+    public String getTextilesUser(Model model) {
+
 //        List<TextileDto> textiles = textileServiceImpl.getTextiles();
 //        List<TextileTypeDto> textileTypes=textileTypeServiceImpl.getTextileTypes();
 //        List<TextileMakeDto> textileMakes = textileMakeServiceImpl.getTextileMakes();
@@ -97,13 +97,17 @@ public class TextileController {
 //        model.addAttribute("textileStatuses", textileStatuses);
 //        model.addAttribute("employees", employees);
 //        model.addAttribute("suppliers", suppliers);
-//        //ovaj model saljem ka HTML stranici
-//        return "TextileUser";
-//    }
-//
+        //ovaj model saljem ka HTML stranici
+        return "TextileUser";
+    }
+
 //    @PostMapping("/textiles/addNew")
 //    public String addBew(TextileDto textile) {
 //        try {
+//            if (textile.getPhoto().isEmpty() || textile.getPhoto() == "") {
+//                textile.setPhoto("default.jpg");
+//            }
+//
 //            TextileDto saved = textileServiceImpl.saveTextile(textile);
 //            System.out.println(saved.getId());
 //        }catch (Exception e){
@@ -175,31 +179,31 @@ public class TextileController {
 //    }
 //
 //
-//    @GetMapping("/upperBodyTextiles")
-//    public String getUpperBodyTextiles(Model model) {
-//
+    @GetMapping("/upperBodyTextiles")
+    public String getUpperBodyTextiles(Model model) {
+
 //        List<TextileDto> textiles = getUpperBodyTextiles();
 ////        System.out.println("GORNJI DELOVI");
 ////        System.out.println(getUpperBodyTextiles());
 ////        System.out.println("DONJI DELOVI");
 ////        System.out.println(getLowerBodyTextiles());
 //        model.addAttribute("textiles", textiles);
-//        //ovaj model saljem ka HTML stranici
-//        return "UpperBodyTextile";
-//    }
-//
-//    @GetMapping("/lowerBodyTextiles")
-//    public String getLowerBodyTextiles(Model model) {
-//
+        //ovaj model saljem ka HTML stranici
+        return "UpperBodyTextile";
+    }
+
+    @GetMapping("/lowerBodyTextiles")
+    public String getLowerBodyTextiles(Model model) {
+
 //        List<TextileDto> textiles = getLowerBodyTextiles();
 ////        System.out.println("GORNJI DELOVI");
 ////        System.out.println(getUpperBodyTextiles());
 ////        System.out.println("DONJI DELOVI");
 ////        System.out.println(getLowerBodyTextiles());
 //        model.addAttribute("textiles", textiles);
-//        //ovaj model saljem ka HTML stranici
-//        return "UpperBodyTextile";
-//    }
+        //ovaj model saljem ka HTML stranici
+        return "UpperBodyTextile";
+    }
 //
 //
 ////    @RequestMapping(value="/invoice/textile/add/{invoiceSellingId}/{textileId}")

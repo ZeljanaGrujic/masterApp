@@ -15,15 +15,20 @@ public class TextileStatusController {
 //    @Autowired
 //    private TextileStatusServiceImpl textileStatusServiceImpl;
 //
-//    @GetMapping("/textileStatuses")
-//    public String getTextileStatus(Model model) {
-//
+    @GetMapping("/textileStatuses")
+    public String getTextileStatus(Model model) {
+
 //        List<TextileStatusDto> textileStatuses = textileStatusServiceImpl.getTextileStatuses();
 //        System.out.println(textileStatuses);
 //        model.addAttribute("textileStatuses", textileStatuses);
-//        //ovaj model saljem ka HTML stranici
-//        return "TextileStatus";
-//    }
+//                if(textileStatuses.isEmpty()){
+//            model.addAttribute("textileStatuses", null);
+//        }else {
+//            model.addAttribute("textileStatuses", textileStatuses);
+//        }
+        //ovaj model saljem ka HTML stranici
+        return "TextileStatus";
+    }
 //
 //    @PostMapping("/textileStatuses/addNew")
 //    public String addBew(TextileStatusDto textileStatus) {

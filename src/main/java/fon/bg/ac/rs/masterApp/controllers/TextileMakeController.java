@@ -15,15 +15,20 @@ public class TextileMakeController {
 //    @Autowired
 //    private TextileMakeServiceImpl textileMakeServiceImpl;
 //
-//    @GetMapping("/textileMakes")
-//    public String getTextileMakes(Model model) {
-//
+    @GetMapping("/textileMakes")
+    public String getTextileMakes(Model model) {
+
 //        List<TextileMakeDto> textileMakes = textileMakeServiceImpl.getTextileMakes();
 //        System.out.println(textileMakes);
 //        model.addAttribute("textileMakes", textileMakes);
-//        //ovaj model saljem ka HTML stranici
-//        return "TextileMake";
-//    }
+//        if (textileMakes.isEmpty()) {
+//            model.addAttribute("textileMakes", null);
+//        } else {
+//            model.addAttribute("textileMakes", textileMakes);
+//        }
+        //ovaj model saljem ka HTML stranici
+        return "TextileMake";
+    }
 //
 //    @PostMapping("/textileMakes/addNew")
 //    public String addBew(TextileMakeDto textileMake) {

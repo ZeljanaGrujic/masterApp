@@ -16,15 +16,20 @@ public class TextileTypeController {
 //    @Autowired
 //    private TextileTypeServiceImpl textileTypeServiceImpl;
 //
-//    @GetMapping("/textileTypes")
-//    public String getTextileTypes(Model model) {
-//
+    @GetMapping("/textileTypes")
+    public String getTextileTypes(Model model) {
+
 //        List<TextileTypeDto> textileTypes = textileTypeServiceImpl.getTextileTypes();
 //        System.out.println(textileTypes);
 //        model.addAttribute("textileTypes", textileTypes);
-//        //ovaj model saljem ka HTML stranici
-//        return "TextileType";
-//    }
+//        if(textileTypes.isEmpty()){
+//            model.addAttribute("textileTypes", null);
+//        }else {
+//            model.addAttribute("textileTypes", textileTypes);
+//        }
+        //ovaj model saljem ka HTML stranici
+        return "TextileType";
+    }
 //
 //    @PostMapping("/textileTypes/addNew")
 //    public String addBew(TextileTypeDto textileType) {

@@ -10,4 +10,6 @@ public interface InvoiceSellingService {
     InvoiceSellingDto saveInvoiceSelling(InvoiceSellingDto invoiceSelling);
 
     InvoiceSellingDto findById(int id);
+
+    List<InvoiceSellingDto> findByClientId(int id);
 }

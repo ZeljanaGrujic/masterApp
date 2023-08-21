@@ -12,36 +12,36 @@ import java.util.List;
 @Controller
 public class TextileStatusController {
 
-//    @Autowired
-//    private TextileStatusServiceImpl textileStatusServiceImpl;
-//
+    @Autowired
+    private TextileStatusServiceImpl textileStatusServiceImpl;
+
     @GetMapping("/textileStatuses")
     public String getTextileStatus(Model model) {
 
-//        List<TextileStatusDto> textileStatuses = textileStatusServiceImpl.getTextileStatuses();
-//        System.out.println(textileStatuses);
-//        model.addAttribute("textileStatuses", textileStatuses);
-//                if(textileStatuses.isEmpty()){
-//            model.addAttribute("textileStatuses", null);
-//        }else {
-//            model.addAttribute("textileStatuses", textileStatuses);
-//        }
+        List<TextileStatusDto> textileStatuses = textileStatusServiceImpl.getTextileStatuses();
+        System.out.println(textileStatuses);
+        model.addAttribute("textileStatuses", textileStatuses);
+                if(textileStatuses.isEmpty()){
+            model.addAttribute("textileStatuses", null);
+        }else {
+            model.addAttribute("textileStatuses", textileStatuses);
+        }
         //ovaj model saljem ka HTML stranici
         return "TextileStatus";
     }
-//
-//    @PostMapping("/textileStatuses/addNew")
-//    public String addBew(TextileStatusDto textileStatus) {
-//        TextileStatusDto savedTextileStatus = textileStatusServiceImpl.saveTextileStatus(textileStatus);
-//        System.out.println(textileStatus.getId());
-//        return "redirect:/textileStatuses";
-//    }
-//
-//    @RequestMapping(value = "/textileStatuses/findById/", params = {"id"}, method = RequestMethod.GET)
-//    @ResponseBody
-//    public TextileStatusDto findById(@RequestParam("id") Integer id) {
-//        TextileStatusDto textileStatus = textileStatusServiceImpl.findById(id);
-//        System.out.println(textileStatus);
-//        return textileStatusServiceImpl.findById(id);
-//    }
+
+    @PostMapping("/textileStatuses/addNew")
+    public String addBew(TextileStatusDto textileStatus) {
+        TextileStatusDto savedTextileStatus = textileStatusServiceImpl.saveTextileStatus(textileStatus);
+        System.out.println(textileStatus.getId());
+        return "redirect:/textileStatuses";
+    }
+
+    @RequestMapping(value = "/textileStatuses/findById/", params = {"id"}, method = RequestMethod.GET)
+    @ResponseBody
+    public TextileStatusDto findById(@RequestParam("id") Integer id) {
+        TextileStatusDto textileStatus = textileStatusServiceImpl.findById(id);
+        System.out.println(textileStatus);
+        return textileStatusServiceImpl.findById(id);
+    }
 }

@@ -15,28 +15,28 @@ import java.security.Principal;
 @Controller
 public class ProfileController {
 
-//    @Autowired
-//    private EmployeeServiceImpl employeeServiceImpl;
-//
-//    @Autowired
-//    private UserServiceImpl userServiceImpl;
-//
+    @Autowired
+    private EmployeeServiceImpl employeeServiceImpl;
+
+    @Autowired
+    private UserServiceImpl userServiceImpl;
+
     @RequestMapping(value = "/myProfile", method = RequestMethod.GET)
     public String profile(Model model, Principal principal) {
 
-//        String username = principal.getName();
-//        Employee empProfile = new Employee();
-//                empProfile=employeeServiceImpl.findByUsername(username);
-//
-//                if(empProfile == null){
-//                    User user = userServiceImpl.findByUsername(username);
-//                    model.addAttribute("myProfile", user);
-//                    return "profileUser";
-//                }
-//
-//
-//            model.addAttribute("myProfile", empProfile);
-//            System.out.println(empProfile);
+        String username = principal.getName();
+        Employee empProfile = new Employee();
+                empProfile=employeeServiceImpl.findByUsername(username);
+
+                if(empProfile == null){
+                    User user = userServiceImpl.findByUsername(username);
+                    model.addAttribute("myProfile", user);
+                    return "profileUser";
+                }
+
+
+            model.addAttribute("myProfile", empProfile);
+            System.out.println(empProfile);
 
         //vraca username ulogovanog korisnika
         return "profile";

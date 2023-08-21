@@ -53,4 +53,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUsername(user.getUsername());
         employeeRepository.save(employee);
     }
+
+    @Override
+    public List<Employee> findByEmployeeTypeId(int id) {
+        List<Employee> all= employeeRepository.findByEmployeeTypeId(id);
+
+        return all;
+    }
 }

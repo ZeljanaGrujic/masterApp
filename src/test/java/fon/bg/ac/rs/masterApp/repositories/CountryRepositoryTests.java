@@ -1,4 +1,4 @@
-package fon.bg.ac.rs.masterApp.controllers.services.repositories;
+package fon.bg.ac.rs.masterApp.repositories;
 
 import fon.bg.ac.rs.masterApp.models.Country;
 import fon.bg.ac.rs.masterApp.repositories.CountryRepository;

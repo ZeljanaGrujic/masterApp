@@ -1,6 +1,7 @@
 package fon.bg.ac.rs.masterApp.servicesImpl;
 
 import fon.bg.ac.rs.masterApp.dtos.InvoiceSellingDto;
+import fon.bg.ac.rs.masterApp.dtos.LocationDto;
 import fon.bg.ac.rs.masterApp.models.InvoiceSelling;
 import fon.bg.ac.rs.masterApp.repositories.InvoiceSellingRepository;
 import fon.bg.ac.rs.masterApp.services.InvoiceSellingService;
@@ -53,5 +54,19 @@ public class InvoiceSellingServiceImpl implements InvoiceSellingService {
         BeanUtils.copyProperties(find, d);
 
         return d;
+    }
+
+    @Override
+    public List<InvoiceSellingDto> findByClientId(int id) {
+        List<InvoiceSelling> all=invoiceSellingRepository.findByClientId(id);
+        List<InvoiceSellingDto> dtos = all.stream()
+                .map(d -> new InvoiceSellingDto(d.getId(),
+                        d.getInvoiceDate(),
+                        d.getInvoiceStatus(),
+                        d.getInvoicestatusid(),
+                        d.getClient(),
+                        d.getClientid(),
+                        d.getSpecialRemarks())).collect(Collectors.toList());
+        return dtos;
     }
 }

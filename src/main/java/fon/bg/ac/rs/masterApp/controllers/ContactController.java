@@ -20,44 +20,44 @@ public class ContactController {
     @GetMapping("/contacts")
     public String getContactss(Model model) {
 
-//        List<ContactDto> contacts=contactServiceImpl.getContacts();
-//        if(contacts.isEmpty()) {
-//            model.addAttribute("contacts", null);
-//        }else {
-//            model.addAttribute("contacts", contacts);
-//        }
+        List<ContactDto> contacts=contactServiceImpl.getContacts();
+        if(contacts.isEmpty()) {
+            model.addAttribute("contacts", null);
+        }else {
+            model.addAttribute("contacts", contacts);
+        }
         //ovaj model saljem ka HTML stranici
         return "MyContact";
     }
-//
-//    @PostMapping("/contacts/addNew")
-//    public String addBew(ContactDto contact) {
-//        ContactDto saved = contactServiceImpl.saveContact(contact);
-//        System.out.println(saved.getId());
-//        return "redirect:/contacts";
-//    }
-//
-//    @RequestMapping(value = "/contacts/findById/", params = {"id"}, method = RequestMethod.GET)
-//    @ResponseBody
-//    public ContactDto findById(@RequestParam("id") Integer id) {
-//        ContactDto contact = contactServiceImpl.findById(id);
-//        System.out.println(contact);
-//        return contactServiceImpl.findById(id);
-//    }
-//
-//    @RequestMapping(value = "/contacts/update", method = {RequestMethod.PUT, RequestMethod.GET})
-//    public String update(ContactDto contact) {
-//        ContactDto updated = contactServiceImpl.saveContact(contact);
-//        System.out.println(updated.getId());
-//        return "redirect:/contacts";
-//    }
-//
-//
-//    @RequestMapping(value = "/contacts/deleteById/", params = {"id"}, method = {RequestMethod.DELETE, RequestMethod.GET})
-//    public String deleteById(@RequestParam("id") Integer id) {
-////        Optional<Location> location = locationServiceImpl.findById(id);
-////        System.out.println(country);
-//        contactServiceImpl.deleteById(id);
-//        return "redirect:/contacts";
-//    }
+
+    @PostMapping("/contacts/addNew")
+    public String addBew(ContactDto contact) {
+        ContactDto saved = contactServiceImpl.saveContact(contact);
+        System.out.println(saved.getId());
+        return "redirect:/contacts";
+    }
+
+    @RequestMapping(value = "/contacts/findById/", params = {"id"}, method = RequestMethod.GET)
+    @ResponseBody
+    public ContactDto findById(@RequestParam("id") Integer id) {
+        ContactDto contact = contactServiceImpl.findById(id);
+        System.out.println(contact);
+        return contactServiceImpl.findById(id);
+    }
+
+    @RequestMapping(value = "/contacts/update", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String update(ContactDto contact) {
+        ContactDto updated = contactServiceImpl.saveContact(contact);
+        System.out.println(updated.getId());
+        return "redirect:/contacts";
+    }
+
+
+    @RequestMapping(value = "/contacts/deleteById/", params = {"id"}, method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteById(@RequestParam("id") Integer id) {
+//        Optional<Location> location = locationServiceImpl.findById(id);
+//        System.out.println(country);
+        contactServiceImpl.deleteById(id);
+        return "redirect:/contacts";
+    }
 }

@@ -17,4 +17,6 @@ public interface EmployeeService {
     Employee findByUsername(String username);
 
     public void assignUsername(int id);
+
+    List<Employee> findByEmployeeTypeId(int id);
 }

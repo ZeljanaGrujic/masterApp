@@ -2,6 +2,7 @@ package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.TextileModelDto;
 import fon.bg.ac.rs.masterApp.servicesImpl.TextileModelServiceImpl;
+import fon.bg.ac.rs.masterApp.servicesImpl.TextileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class TextileModelController {
 
         @Autowired
     private TextileModelServiceImpl textileModelServiceImpl;
+
+        @Autowired
+        private TextileServiceImpl textileService;
 
     @GetMapping("/textileModels")
     public String getTextileTypes(Model model) {
@@ -63,7 +67,11 @@ public class TextileModelController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            textileModelServiceImpl.deleteById(id);
+            if(textileService.findByTextileModelId(id).isEmpty()) {
+                textileModelServiceImpl.deleteById(id);
+            }else{
+                throw new Exception("Ne mozete izbrisati model jer postoje proizvodi sa ovim podacima!");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovaj model");
             return "TextileModelDeleteError";

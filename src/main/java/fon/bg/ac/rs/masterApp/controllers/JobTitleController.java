@@ -1,6 +1,7 @@
 package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.JobTitleDto;
+import fon.bg.ac.rs.masterApp.servicesImpl.EmployeeServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.JobTitleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class JobTitleController {
 
     @Autowired
     private JobTitleServiceImpl jobTitleServiceImpl;
+
+    @Autowired
+    private EmployeeServiceImpl employeeService;
 
 
     @GetMapping("/jobTitles")
@@ -63,7 +67,11 @@ public class JobTitleController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            jobTitleServiceImpl.deleteById(id);
+            if(employeeService.findByJobTitleId(id).isEmpty()) {
+                jobTitleServiceImpl.deleteById(id);
+            }else {
+                throw new Exception("Ne mozete izbrisati ovaj naziv/opis radnog mesta jer postoji zaposleni sa ovim podacima");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovaj naziv/opis radnog mesta");
             return "JobTitleDeleteError";

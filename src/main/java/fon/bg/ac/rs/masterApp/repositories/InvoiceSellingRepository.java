@@ -11,4 +11,5 @@ import java.util.List;
 public interface InvoiceSellingRepository extends JpaRepository<InvoiceSelling, Integer> {
 
     List<InvoiceSelling> findByClientId(int id);
+
 }

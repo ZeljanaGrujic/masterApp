@@ -1,7 +1,9 @@
 package fon.bg.ac.rs.masterApp.servicesImpl;
 
 import fon.bg.ac.rs.masterApp.dtos.InvoiceBuyingDto;
+import fon.bg.ac.rs.masterApp.dtos.InvoiceSellingDto;
 import fon.bg.ac.rs.masterApp.models.InvoiceBuying;
+import fon.bg.ac.rs.masterApp.models.InvoiceSelling;
 import fon.bg.ac.rs.masterApp.repositories.InvoiceBuyingRepository;
 import fon.bg.ac.rs.masterApp.services.InvoiceBuyingService;
 import org.springframework.beans.BeanUtils;
@@ -54,6 +56,20 @@ public class InvoiceBuyingServiceImpl implements InvoiceBuyingService {
         BeanUtils.copyProperties(find, d);
 
         return d;
+    }
+
+    @Override
+    public List<InvoiceBuyingDto> findBySupplierId(int id) {
+        List<InvoiceBuying> all=invoiceBuyingRepository.findBySupplierId(id);
+        List<InvoiceBuyingDto> dtos = all.stream()
+                .map(d -> new InvoiceBuyingDto(d.getId(),
+                        d.getInvoiceDate(),
+                        d.getInvoiceStatus(),
+                        d.getInvoicestatusid(),
+                        d.getSupplier(),
+                        d.getSupplierid(),
+                        d.getSpecialRemarks())).collect(Collectors.toList());
+        return dtos;
     }
 
 }

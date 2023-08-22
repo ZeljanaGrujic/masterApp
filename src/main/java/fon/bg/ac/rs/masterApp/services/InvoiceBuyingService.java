@@ -10,4 +10,6 @@ public interface InvoiceBuyingService {
     InvoiceBuyingDto saveInvoiceBuying(InvoiceBuyingDto invoiceBuying);
 
     InvoiceBuyingDto findById(int id);
+
+    public List<InvoiceBuyingDto> findBySupplierId(int id);
 }

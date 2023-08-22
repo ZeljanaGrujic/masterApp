@@ -1,6 +1,7 @@
 package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.TextileTypeDto;
+import fon.bg.ac.rs.masterApp.servicesImpl.TextileServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.TextileTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class TextileTypeController {
 
     @Autowired
     private TextileTypeServiceImpl textileTypeServiceImpl;
+
+    @Autowired
+    private TextileServiceImpl textileService;
 
     @GetMapping("/textileTypes")
     public String getTextileTypes(Model model) {
@@ -63,7 +67,11 @@ public class TextileTypeController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            textileTypeServiceImpl.deleteById(id);
+            if(textileService.findByTextileTypeId(id).isEmpty()) {
+                textileTypeServiceImpl.deleteById(id);
+            }else{
+                throw new Exception("Ne mozete izbrisati kategoriju jer postoje proizvodi sa ovim podacima!");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovog klijenta");
             return "TextileTypeDeleteError";

@@ -2,6 +2,7 @@ package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.LocationDto;
 import fon.bg.ac.rs.masterApp.dtos.SupplierDto;
+import fon.bg.ac.rs.masterApp.servicesImpl.InvoiceBuyingServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.LocationServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.SupplierServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class SupplierController {
 
     @Autowired
     private LocationServiceImpl locationServiceImpl;
+
+    @Autowired
+    private InvoiceBuyingServiceImpl invoiceBuyingService;
 
 
     @GetMapping("/suppliers")
@@ -65,7 +69,11 @@ public class SupplierController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            supplierServiceImpl.deleteById(id);
+            if(invoiceBuyingService.findBySupplierId(id).isEmpty()) {
+                supplierServiceImpl.deleteById(id);
+            }else {
+                throw new Exception("Ne mozete izbrisati ovog dobavljaca jer postoje fakture za njega");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovog dobavljaca");
             return "SupplierDeleteError";

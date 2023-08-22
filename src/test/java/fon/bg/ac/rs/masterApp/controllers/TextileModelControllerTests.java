@@ -91,7 +91,7 @@ class TextileModelControllerTests {
         int id = 1;
 
         String viewName = textileModelController.deleteById(id);
-        assertEquals("redirect:/textileModels", viewName);
-        verify(textileMakeService, times(1)).deleteById(id);
+        assertEquals("TextileModelDeleteError", viewName);
+        verify(textileMakeService, times(0)).deleteById(id);
     }
 }

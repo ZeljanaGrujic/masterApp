@@ -13,6 +13,14 @@ public interface TextileRepository extends JpaRepository<Textile, Integer> {
 
     List<Textile> findByPurpose(String purpose);
 
+    List<Textile> findByTextleMakeId(int id);
+    List<Textile> findByTextileModelId(int id);
+    List<Textile> findByTextileStatusId(int id);
+
+    List<Textile> findByTextileTypeId(int id);
+
+    List<Textile> findByInChargeId(int id);
+
     @Query(
             value = "SELECT * FROM textile WHERE id NOT IN (SELECT textile_id FROM invoices_textile WHERE invoice_selling_id = ?1)",
             nativeQuery = true

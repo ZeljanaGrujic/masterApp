@@ -104,6 +104,145 @@ public class TextileServiceImpl implements TextileService {
         return dtos;
     }
 
+    @Override
+    public List<TextileDto> findByTextleMakeId(int id) {
+        List<Textile> all = textileRepository.findByTextleMakeId(id);
+        List<TextileDto> dtos = all.stream()
+                .map(d -> new TextileDto(d.getId(),
+                        d.getUniqueCode(),
+                        d.getPiecePrice(),
+                        d.getSpecialDescription(),
+                        d.getAvailableQuantity(),
+                        d.getPhoto(),
+                        d.getPurpose(),
+                        d.getAcquisitionDate(),
+                        d.getTextileType(),
+                        d.getTextileType().getId(),
+                        d.getTextleMake(),
+                        d.getTextleMake().getId(),
+                        d.getTextileModel(),
+                        d.getTextileModel().getId(),
+                        d.getTextileStatus(),
+                        d.getTextileStatus().getId(),
+                        d.getInCharge(),
+                        d.getInCharge().getId(),
+                        d.getSupplier(),
+                        d.getSupplier().getId())).collect(Collectors.toList());
+
+        return dtos;
+    }
+
+    @Override
+    public List<TextileDto> findByTextileModelId(int id) {
+        List<Textile> all = textileRepository.findByTextileModelId(id);
+        List<TextileDto> dtos = all.stream()
+                .map(d -> new TextileDto(d.getId(),
+                        d.getUniqueCode(),
+                        d.getPiecePrice(),
+                        d.getSpecialDescription(),
+                        d.getAvailableQuantity(),
+                        d.getPhoto(),
+                        d.getPurpose(),
+                        d.getAcquisitionDate(),
+                        d.getTextileType(),
+                        d.getTextileType().getId(),
+                        d.getTextleMake(),
+                        d.getTextleMake().getId(),
+                        d.getTextileModel(),
+                        d.getTextileModel().getId(),
+                        d.getTextileStatus(),
+                        d.getTextileStatus().getId(),
+                        d.getInCharge(),
+                        d.getInCharge().getId(),
+                        d.getSupplier(),
+                        d.getSupplier().getId())).collect(Collectors.toList());
+
+        return dtos;
+    }
+
+    @Override
+    public List<TextileDto> findByTextileStatusId(int id) {
+        List<Textile> all = textileRepository.findByTextileStatusId(id);
+        List<TextileDto> dtos = all.stream()
+                .map(d -> new TextileDto(d.getId(),
+                        d.getUniqueCode(),
+                        d.getPiecePrice(),
+                        d.getSpecialDescription(),
+                        d.getAvailableQuantity(),
+                        d.getPhoto(),
+                        d.getPurpose(),
+                        d.getAcquisitionDate(),
+                        d.getTextileType(),
+                        d.getTextileType().getId(),
+                        d.getTextleMake(),
+                        d.getTextleMake().getId(),
+                        d.getTextileModel(),
+                        d.getTextileModel().getId(),
+                        d.getTextileStatus(),
+                        d.getTextileStatus().getId(),
+                        d.getInCharge(),
+                        d.getInCharge().getId(),
+                        d.getSupplier(),
+                        d.getSupplier().getId())).collect(Collectors.toList());
+
+        return dtos;
+    }
+
+    @Override
+    public List<TextileDto> findByTextileTypeId(int id) {
+        List<Textile> all = textileRepository.findByTextileTypeId(id);
+        List<TextileDto> dtos = all.stream()
+                .map(d -> new TextileDto(d.getId(),
+                        d.getUniqueCode(),
+                        d.getPiecePrice(),
+                        d.getSpecialDescription(),
+                        d.getAvailableQuantity(),
+                        d.getPhoto(),
+                        d.getPurpose(),
+                        d.getAcquisitionDate(),
+                        d.getTextileType(),
+                        d.getTextileType().getId(),
+                        d.getTextleMake(),
+                        d.getTextleMake().getId(),
+                        d.getTextileModel(),
+                        d.getTextileModel().getId(),
+                        d.getTextileStatus(),
+                        d.getTextileStatus().getId(),
+                        d.getInCharge(),
+                        d.getInCharge().getId(),
+                        d.getSupplier(),
+                        d.getSupplier().getId())).collect(Collectors.toList());
+
+        return dtos;
+    }
+
+    @Override
+    public List<TextileDto> findByEmployeeId(int id) {
+        List<Textile> all = textileRepository.findByInChargeId(id);
+        List<TextileDto> dtos = all.stream()
+                .map(d -> new TextileDto(d.getId(),
+                        d.getUniqueCode(),
+                        d.getPiecePrice(),
+                        d.getSpecialDescription(),
+                        d.getAvailableQuantity(),
+                        d.getPhoto(),
+                        d.getPurpose(),
+                        d.getAcquisitionDate(),
+                        d.getTextileType(),
+                        d.getTextileType().getId(),
+                        d.getTextleMake(),
+                        d.getTextleMake().getId(),
+                        d.getTextileModel(),
+                        d.getTextileModel().getId(),
+                        d.getTextileStatus(),
+                        d.getTextileStatus().getId(),
+                        d.getInCharge(),
+                        d.getInCharge().getId(),
+                        d.getSupplier(),
+                        d.getSupplier().getId())).collect(Collectors.toList());
+
+        return dtos;
+    }
 
 
 //    public void addTextileItem(Integer invoiceId, Integer textileId){

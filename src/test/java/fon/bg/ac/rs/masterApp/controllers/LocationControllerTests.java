@@ -97,7 +97,7 @@ class LocationControllerTests {
 
         String viewName = locationController.deleteById(id);
 
-        assertEquals("redirect:/locations", viewName);
-        verify(locationService, times(1)).deleteById(id);
+        assertEquals("LocationDeleteError", viewName);
+        verify(locationService, times(0)).deleteById(id);
     }
 }

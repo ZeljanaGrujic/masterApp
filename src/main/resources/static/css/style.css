@@ -140,7 +140,7 @@ table tr th { color: #688a7e;}
 
 .login-img-body{
 
-  background: url('../img/bg-1.jpg') no-repeat center center fixed !important;
+  background: url('../img/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -154,7 +154,7 @@ table tr th { color: #688a7e;}
 
 .login-img2-body{
 
-  background: url('../img/bg-1.jpg') no-repeat center center fixed !important;
+  background: url('../img/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -168,7 +168,7 @@ table tr th { color: #688a7e;}
 
 .login-img3-body{
 
-  background: url('../img/bg-1.jpg') no-repeat center center fixed !important;
+  background: url('../img/bg-1.jpg') no-repeat center center fixed;
 
   -webkit-background-size: cover;
 
@@ -9990,3 +9990,73 @@ span.customSelect.changed {
 .gallery-next {
   right: 0;
 }
+
+/*ZA USER TABELU DROPDOWN*/
+
+/*
+.table {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table:hover {
+    max-width: 1300px;
+}
+
+*/
+
+.table {
+
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.table tr {
+    transition: transform 0.3s ease-in-out;
+}
+
+.table tr:hover {
+    transform: scale(1.04); /* Povećava red za 4% prilikom hoverovanja */
+}
+
+
+
+.table-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#toggleButton {
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.table-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    margin-top: 20px; /* Dodajte razmak iznad dugmeta */
+}
+/*
+.table-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}*/

@@ -436,61 +436,64 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista klijenata</h1>
 
+            <div class="table-container">
+                <h1> Lista klijenata</h1>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Dodaj klijenta
-            </button>
+                <div th:switch="${clients}">
+                    <h2 th:case="null">Ne postoji ni jedan klijent!</h2>
+                    <div th:case="*">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ime i prezime</th>
+                                <th>Region/drzava</th>
+                                <th>Izmeni</th>
+                                <th>Pogledaj detalje</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="client : ${clients}">
+                                <td th:text="${client.id}"></td>
+                                <td th:text="${client.fullName}"></td>
+                                <!--                    <td th:text="${client.surname}"></td>-->
+                                <td th:text="${client.location.country.name}"></td>
+                                <!--                    <td th:text="${jobTitle.details}"></td>-->
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/clients/findById/(id=${client.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
 
-            <div th:switch="${clients}">
-                <h2 th:case="null">Ne postoji ni jedan klijent!</h2>
-                <div th:case="*">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ime i prezime</th>
-                            <th>Region/drzava</th>
-                            <th>Izmeni</th>
-                            <th>Pogledaj detalje</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="client : ${clients}">
-                            <td th:text="${client.id}"></td>
-                            <td th:text="${client.fullName}"></td>
-                            <!--                    <td th:text="${client.surname}"></td>-->
-                            <td th:text="${client.location.country.name}"></td>
-                            <!--                    <td th:text="${jobTitle.details}"></td>-->
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" th:href="@{/clients/findById/(id=${client.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/clients/findById/(id=${client.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/clients/findById/(id=${client.id})}">Detalji</a>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/clients/deleteById/(id=${client.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/clients/deleteById/(id=${client.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+                <div class="button-container">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                        data-whatever="@mdo">Dodaj klijenta
+                </button>
+                </div>
+
             </div>
-
-
             <!-- page end-->
         </section>
     </section>

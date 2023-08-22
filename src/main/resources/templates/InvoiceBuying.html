@@ -463,7 +463,7 @@
                         <tbody>
                         <tr th:each="invoiceBuying : ${invoiceBuyings}">
                             <td th:text="${invoiceBuying.id}"></td>
-                            <td th:text="${invoiceBuying.invoiceDate}"></td>
+                            <td th:text="${#dates.format(invoiceBuying.invoiceDate, 'yyyy-MM-dd')}"></td>
                             <td th:text="${invoiceBuying.invoiceStatus.description}"></td>
                             <td th:text="${invoiceBuying.supplier.fullName}"></td>
                             <!--                            <td th:text="${jobTitle.details}"></td>-->

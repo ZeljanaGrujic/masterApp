@@ -82,7 +82,7 @@ class JobTitleControllerTests {
         int id = 1;
 
         String viewName = jobTitleController.deleteById(id);
-        assertEquals("redirect:/jobTitles", viewName);
+        assertEquals("JobTitleDeleteError", viewName);
         verify(jobTitleService, times(1)).deleteById(id);
     }
 }

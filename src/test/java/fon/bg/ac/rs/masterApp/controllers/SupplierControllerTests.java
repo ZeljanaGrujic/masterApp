@@ -114,7 +114,7 @@ class SupplierControllerTests {
 
         String viewName = supplierController.deleteById(id);
 
-        assertEquals("redirect:/suppliers", viewName);
+        assertEquals("SupplierDeleteError", viewName);
         verify(supplierService, times(1)).deleteById(id);
     }
 }

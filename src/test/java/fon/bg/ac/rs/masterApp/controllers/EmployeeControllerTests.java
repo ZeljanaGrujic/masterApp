@@ -5,6 +5,7 @@ import fon.bg.ac.rs.masterApp.dtos.EmployeeTypeDto;
 import fon.bg.ac.rs.masterApp.dtos.JobTitleDto;
 import fon.bg.ac.rs.masterApp.dtos.LocationDto;
 import fon.bg.ac.rs.masterApp.models.Employee;
+import fon.bg.ac.rs.masterApp.models.servicesImpl.*;
 import fon.bg.ac.rs.masterApp.servicesImpl.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

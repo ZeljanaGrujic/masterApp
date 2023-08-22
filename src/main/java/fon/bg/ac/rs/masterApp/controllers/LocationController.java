@@ -2,8 +2,7 @@ package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.CountryDto;
 import fon.bg.ac.rs.masterApp.dtos.LocationDto;
-import fon.bg.ac.rs.masterApp.servicesImpl.CountryServiceImpl;
-import fon.bg.ac.rs.masterApp.servicesImpl.LocationServiceImpl;
+import fon.bg.ac.rs.masterApp.servicesImpl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,15 @@ public class LocationController {
 
     @Autowired
     private CountryServiceImpl countryServiceImpl;
+
+    @Autowired
+    private EmployeeServiceImpl employeeService;
+
+    @Autowired
+    private ClientServiceImpl clientService;
+
+    @Autowired
+    private SupplierServiceImpl supplierService;
     @GetMapping("/locations")
     public String getLocations(Model model) {
 
@@ -65,7 +73,11 @@ public class LocationController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            locationServiceImpl.deleteById(id);
+            if(employeeService.findByLocationId(id).isEmpty() || clientService.findByLocationId(id).isEmpty() || supplierService.findByLocationId(id).isEmpty()) {
+                locationServiceImpl.deleteById(id);
+            }else{
+                throw new Exception("Ne mozete izbrisati ovu lokaciju jer postoje zaposleni, klijenti i/ili dobavljaci registrovani na njoj");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovu lokaciju");
             return "LocationDeleteError";

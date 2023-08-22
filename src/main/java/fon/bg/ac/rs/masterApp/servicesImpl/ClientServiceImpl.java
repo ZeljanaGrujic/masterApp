@@ -2,6 +2,7 @@ package fon.bg.ac.rs.masterApp.servicesImpl;
 
 
 import fon.bg.ac.rs.masterApp.dtos.ClientDto;
+import fon.bg.ac.rs.masterApp.dtos.LocationDto;
 import fon.bg.ac.rs.masterApp.models.Client;
 import fon.bg.ac.rs.masterApp.repositories.ClientRepository;
 import fon.bg.ac.rs.masterApp.services.ClientService;
@@ -62,5 +63,19 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void deleteById(int id) {
         clientRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ClientDto> findByLocationId(int id) {
+        List<Client> all= clientRepository.findByLocationId(id);
+        List<ClientDto> dtos=all.stream()
+                .map(d -> new ClientDto(d.getId(),
+                        d.getFullName(),
+                        d.getPhone(),
+                        d.getEmail(),
+                        d.getDetails(),
+                        d.getLocation(),
+                        d.getLocationid())).collect(Collectors.toList());
+        return dtos;
     }
 }

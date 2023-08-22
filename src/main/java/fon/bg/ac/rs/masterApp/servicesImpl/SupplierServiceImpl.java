@@ -1,6 +1,8 @@
 package fon.bg.ac.rs.masterApp.servicesImpl;
 
+import fon.bg.ac.rs.masterApp.dtos.ClientDto;
 import fon.bg.ac.rs.masterApp.dtos.SupplierDto;
+import fon.bg.ac.rs.masterApp.models.Client;
 import fon.bg.ac.rs.masterApp.models.Supplier;
 import fon.bg.ac.rs.masterApp.repositories.SupplierRepository;
 import fon.bg.ac.rs.masterApp.services.SupplierService;
@@ -59,5 +61,20 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public void deleteById(int id) {
         supplierRepository.deleteById(id);
+    }
+
+    @Override
+    public List<SupplierDto> findByLocationId(int id) {
+        List<Supplier> all= supplierRepository.findByLocationId(id);
+        List<SupplierDto> dtos=all.stream()
+                .map(d -> new SupplierDto(d.getId(),
+                        d.getFullName(),
+                        d.getPhone(),
+                        d.getEmail(),
+                        d.getCompanyName(),
+                        d.getDetails(),
+                        d.getLocation(),
+                        d.getLocationid())).collect(Collectors.toList());
+        return dtos;
     }
 }

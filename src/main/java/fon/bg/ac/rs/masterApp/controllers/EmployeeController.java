@@ -31,6 +31,12 @@ public class EmployeeController {
     @Autowired
     private CountryServiceImpl countryServiceImpl;
 
+    @Autowired
+    private UserServiceImpl userService;
+
+    @Autowired
+    private TextileServiceImpl textileService;
+
     @GetMapping("/employees")
     public String getEmployees(Model model) {
         List<Employee> employees = employeeServiceImpl.getEmployees();
@@ -45,9 +51,9 @@ public class EmployeeController {
         System.out.println(locations);
         System.out.println(countries);
 
-        if(employees.isEmpty()){
+        if (employees.isEmpty()) {
             model.addAttribute("employees", null);
-        }else {
+        } else {
             model.addAttribute("employees", employees);
         }
         model.addAttribute("employeeTypes", employeeTypes);
@@ -63,22 +69,22 @@ public class EmployeeController {
     public String addBew(Employee employee) {
         try {
 
-            Integer locationid= employee.getLocationid();
-            System.out.println("Location id is: "+locationid);
-            LocationDto locationDto=locationServiceImpl.findById((int)locationid);
-            Integer countryID=locationDto.getCountryid();
-            System.out.println("Country id from location: "+countryID);
+            Integer locationid = employee.getLocationid();
+            System.out.println("Location id is: " + locationid);
+            LocationDto locationDto = locationServiceImpl.findById((int) locationid);
+            Integer countryID = locationDto.getCountryid();
+            System.out.println("Country id from location: " + countryID);
 
             employee.setCountryid(countryID);
 
-            if(employee.getPhoto().isEmpty() || employee.getPhoto()==""){
+            if (employee.getPhoto().isEmpty() || employee.getPhoto() == "") {
                 employee.setPhoto("default.jpg");
             }
             Employee saved = employeeServiceImpl.saveEmployee(employee);
-           // System.out.println(employee.getLocation().getCountryid());
+            // System.out.println(employee.getLocation().getCountryid());
             System.out.println(saved.getId());
-        }catch (Exception e){
-            System.out.println("Zaposleni nije uspesno sacuvan!"+e.getCause()+" "+e.getMessage()+" "+e.getLocalizedMessage());
+        } catch (Exception e) {
+            System.out.println("Zaposleni nije uspesno sacuvan!" + e.getCause() + " " + e.getMessage() + " " + e.getLocalizedMessage());
             return "EmployeeSaveError";
         }
         return "redirect:/employees";
@@ -105,14 +111,14 @@ public class EmployeeController {
 //        employee.setCountry(country);
 
 
-        Integer locationid= employee.getLocationid();
-        LocationDto locationDto=locationServiceImpl.findById((int)locationid);
-        Integer countryID=locationDto.getCountryid();
-        System.out.println("Country id from location: "+countryID);
+        Integer locationid = employee.getLocationid();
+        LocationDto locationDto = locationServiceImpl.findById((int) locationid);
+        Integer countryID = locationDto.getCountryid();
+        System.out.println("Country id from location: " + countryID);
 
         employee.setCountryid(countryID);
 
-        if(employee.getPhoto().isEmpty() || employee.getPhoto()==""){
+        if (employee.getPhoto().isEmpty() || employee.getPhoto() == "") {
             employee.setPhoto("default.jpg");
         }
         Employee updated = employeeServiceImpl.saveEmployee(employee);
@@ -125,18 +131,35 @@ public class EmployeeController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            employeeServiceImpl.deleteById(id);
-        }catch (Exception e){
+            if(textileService.findByEmployeeId(id).isEmpty()) {
+                employeeServiceImpl.deleteById(id);
+            }else{
+                throw new Exception("Ne mozete izbrisati zaposlenog jer je zaduzen za neki proizvod!");
+            }
+        } catch (Exception e) {
             System.out.println("Ne mozete izbrisati podatke za ovog zaposlenog");
             return "EmployeeDeleteError";
         }
         return "redirect:/employees";
     }
 
-    @RequestMapping(value = "/employees/assignUsername/",params = {"id"}, method = RequestMethod.GET)
-    public  String assignUsername(int id){
-        employeeServiceImpl.assignUsername(id);
-        return "redirect:/employees";
-    }
+    @RequestMapping(value = "/employees/assignUsername/", params = {"id"}, method = RequestMethod.GET)
+    public String assignUsername(int id) {
 
+        try {
+
+            if (employeeServiceImpl.findUserForEmployee(id) != null) {
+                employeeServiceImpl.assignUsername(id);
+                return "redirect:/employees";
+
+            } else {
+                throw new Exception("Ne mozete podesiti korisnicko ime za ovog zaposlenog jer nije registrovan!");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Neuspesno podesavanje username-a!");
+            return "EmployeeUsernameSaveError";
+        }
+
+    }
 }

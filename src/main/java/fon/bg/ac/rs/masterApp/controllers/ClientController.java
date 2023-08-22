@@ -2,7 +2,6 @@ package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.ClientDto;
 import fon.bg.ac.rs.masterApp.dtos.LocationDto;
-import fon.bg.ac.rs.masterApp.models.InvoiceSelling;
 import fon.bg.ac.rs.masterApp.servicesImpl.ClientServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.InvoiceSellingServiceImpl;
 import fon.bg.ac.rs.masterApp.servicesImpl.LocationServiceImpl;

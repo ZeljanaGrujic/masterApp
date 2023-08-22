@@ -2,6 +2,7 @@ package fon.bg.ac.rs.masterApp.controllers;
 
 import fon.bg.ac.rs.masterApp.dtos.TextileMakeDto;
 import fon.bg.ac.rs.masterApp.servicesImpl.TextileMakeServiceImpl;
+import fon.bg.ac.rs.masterApp.servicesImpl.TextileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,9 @@ public class TextileMakeController {
 
     @Autowired
     private TextileMakeServiceImpl textileMakeServiceImpl;
+
+    @Autowired
+    private TextileServiceImpl textileService;
 
     @GetMapping("/textileMakes")
     public String getTextileMakes(Model model) {
@@ -62,7 +66,11 @@ public class TextileMakeController {
     public String deleteById(@RequestParam("id") Integer id) {
 
         try {
-            textileMakeServiceImpl.deleteById(id);
+            if(textileService.findByTextleMakeId(id).isEmpty()) {
+                textileMakeServiceImpl.deleteById(id);
+            }else {
+                throw new Exception("Ne mozete izbrisati marku jer postoje proizvodi sa ovim podacima!");
+            }
         }catch (Exception e){
             System.out.println("Ne mozete izbrisati podatke za ovu marku");
             return "TextileMakeDeleteError";

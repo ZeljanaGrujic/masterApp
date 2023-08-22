@@ -54,6 +54,26 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.save(employee);
     }
 
+    public User findUserForEmployee(int id){
+        Employee employee = employeeRepository.findById(id).orElse(null);
+        User user = userRepository.findByFirstnameAndLastname(
+                employee.getFirstname(),
+                employee.getLastname());
+        return user;
+    }
+
+    @Override
+    public List<Employee> findByLocationId(int id) {
+        List<Employee> all= employeeRepository.findByLocationId(id);
+        return all;
+    }
+
+    @Override
+    public List<Employee> findByJobTitleId(int id) {
+        List<Employee> all= employeeRepository.findByJobTitleId(id);
+        return all;
+    }
+
     @Override
     public List<Employee> findByEmployeeTypeId(int id) {
         List<Employee> all= employeeRepository.findByEmployeeTypeId(id);

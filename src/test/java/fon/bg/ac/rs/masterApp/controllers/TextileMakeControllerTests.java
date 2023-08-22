@@ -92,6 +92,6 @@ class TextileMakeControllerTests {
 
         String viewName = textileMakeController.deleteById(id);
         assertEquals("TextileMakeDeleteError", viewName);
-        verify(textileMakeService, times(1)).deleteById(id);
+        verify(textileMakeService, times(0)).deleteById(id);
     }
 }

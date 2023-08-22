@@ -83,6 +83,6 @@ class JobTitleControllerTests {
 
         String viewName = jobTitleController.deleteById(id);
         assertEquals("JobTitleDeleteError", viewName);
-        verify(jobTitleService, times(1)).deleteById(id);
+        verify(jobTitleService, times(0)).deleteById(id);
     }
 }

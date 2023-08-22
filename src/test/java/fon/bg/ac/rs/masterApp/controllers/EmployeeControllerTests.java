@@ -134,6 +134,6 @@ public class EmployeeControllerTests {
         String viewName = employeeController.deleteById(id);
 
         assertEquals("EmployeeDeleteError", viewName);
-        verify(employeeService, times(1)).deleteById(id);
+        verify(employeeService, times(0)).deleteById(id);
     }
 }

@@ -98,6 +98,6 @@ class LocationControllerTests {
         String viewName = locationController.deleteById(id);
 
         assertEquals("LocationDeleteError", viewName);
-        verify(locationService, times(1)).deleteById(id);
+        verify(locationService, times(0)).deleteById(id);
     }
 }

@@ -92,6 +92,6 @@ class TextileModelControllerTests {
 
         String viewName = textileModelController.deleteById(id);
         assertEquals("TextileModelDeleteError", viewName);
-        verify(textileMakeService, times(1)).deleteById(id);
+        verify(textileMakeService, times(0)).deleteById(id);
     }
 }

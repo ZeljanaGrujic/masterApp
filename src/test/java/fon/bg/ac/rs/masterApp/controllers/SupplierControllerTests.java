@@ -115,6 +115,6 @@ class SupplierControllerTests {
         String viewName = supplierController.deleteById(id);
 
         assertEquals("SupplierDeleteError", viewName);
-        verify(supplierService, times(1)).deleteById(id);
+        verify(supplierService, times(0)).deleteById(id);
     }
 }

@@ -440,47 +440,67 @@
             <h1> Podaci o korisnicima</h1>
 
 
-            <div th:switch="${users}">
-                <h2 th:case="null">Ne postoji ni jedan korisnik!</h2>
-                <div th:case="*">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ime</th>
-                            <th>Prezime</th>
-                            <th>Korisnicko ime</th>
-                            <th>Dodaj ulogu</th>
-                            <!--                    <th>Izmeni</th>-->
-<!--                            <th>Izbrisi</th>-->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="user:${users}">
-                            <td th:text="${user.id}"></td>
-                            <td th:text="${user.firstname}"></td>
-                            <td th:text="${user.lastname}"></td>
-                            <td th:text="${user.username}"></td>
-                            <td><a th:href="@{/security/user/Edit/(id=${user.id})}"
-                                   class="btn btn-default">Upravljaj ulogama</a></td>
-                            <!--                    <td>-->
-                            <!--                        <div class="btn-group">-->
-                            <!--                            <a class="btn btn-primary" th:href="@{/users/findById/(id=${user.id})}" id="editButton">Izmeni</a>-->
-                            <!--                        </div>-->
-                            <!--                    </td>-->
-<!--                            <td>-->
-<!--                                <div class="btn-group">-->
-<!--                                    <a id="deleteButton" class="btn btn-danger"-->
-<!--                                       th:href="@{/users/deleteById/(id=${user.id})}">Izbrisi</a>-->
+
+                        <div th:switch="${users}">
+                            <h2 th:case="null">Ne postoji ni jedan korisnik!</h2>
+                            <div th:case="*">
+
+<!--                                <div class="table-header" id="tableHeader">-->
+<!--                                    <h2>Korisnici</h2>-->
+<!--                                    <button id="toggleButton">Prikazi korisnike</button>-->
 <!--                                </div>-->
-<!--                            </td>-->
-                        </tr>
-                        </tbody>
-                    </table>
+
+                                <table class="table hidden-table" id="userTable">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Ime</th>
+                                        <th>Prezime</th>
+                                        <th>Korisnicko ime</th>
+                                        <!--                            <th>Dodaj ulogu</th>-->
+                                        <!--                    <th>Izmeni</th>-->
+                                        <!--                            <th>Izbrisi</th>-->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="user:${users}">
+                                        <td th:text="${user.id}"></td>
+                                        <td th:text="${user.firstname}"></td>
+                                        <td th:text="${user.lastname}"></td>
+                                        <td th:text="${user.username}"></td>
+
+
+                                        <!--                            Za sada necu upravljanje ulogama-->
+
+                                        <!--                            <td><a th:href="@{/security/user/Edit/(id=${user.id})}"-->
+                                        <!--                                   class="btn btn-default">Upravljaj ulogama</a></td>-->
+                                        <!--                            -->
+
+
+                                        <!--                    <td>-->
+                                        <!--                        <div class="btn-group">-->
+                                        <!--                            <a class="btn btn-primary" th:href="@{/users/findById/(id=${user.id})}" id="editButton">Izmeni</a>-->
+                                        <!--                        </div>-->
+                                        <!--                    </td>-->
+                                        <!--                            <td>-->
+                                        <!--                                <div class="btn-group">-->
+                                        <!--                                    <a id="deleteButton" class="btn btn-danger"-->
+                                        <!--                                       th:href="@{/users/deleteById/(id=${user.id})}">Izbrisi</a>-->
+                                        <!--                                </div>-->
+                                        <!--                            </td>-->
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-
             <!-- page end-->
         </section>
     </section>
@@ -597,6 +617,7 @@
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
 <script src="js/User.js"></script>
+
 
 
 </body>

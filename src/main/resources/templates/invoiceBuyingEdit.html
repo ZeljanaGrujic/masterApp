@@ -455,7 +455,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-4 col-form-label">Datum kreiranja</label>
                                         <div class="col-sm-6">
-                                            <input name="invoiceDate" th:value="${invoiceBuying.invoiceDate}"
+                                            <input name="invoiceDate" th:value="${#dates.format(invoiceBuying.invoiceDate, 'yyyy-MM-dd')}"
                                                    class="form-control" size="16" type="text" readonly>
                                         </div>
                                     </div>
@@ -653,7 +653,7 @@
                         <label for="invoiceSellingAdd" class="col-sm-4 col-form-label">Faktura</label>
                         <div class="col-sm-6">
                             <select class="form-control" id="invoiceSellingAdd" name="invoicebuyingid">
-                                <option>Odaberi fakturu</option>
+<!--                                <option>Odaberi fakturu</option>-->
                                 <option th:value="${invoiceBuying.id}"
                                         th:text="'Jedinstveni broj fakture - '+ ${invoiceBuying.id}">
                                 </option>

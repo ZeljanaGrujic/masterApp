@@ -435,68 +435,73 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista faktura za dobavljace</h1>
 
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo"> Nova faktura
-            </button>
+            <div class="table-container">
+                <h1> Lista faktura za dobavljace</h1>
 
-            <div th:switch="${invoiceBuyings}">
-                <h2 th:case="null">Ne postoji ni jedna faktura!</h2>
-                <div th:case="*">
+                <div th:switch="${invoiceBuyings}">
+                    <h2 th:case="null">Ne postoji ni jedna faktura!</h2>
+                    <div th:case="*">
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Datum kreiranja</th>
-                            <th>Status</th>
-                            <th>Dobavljac</th>
-                            <!--                            <th>Dodaj proizvode</th>-->
-                            <th>Dodaj proizvode</th>
-                            <th>Izmeni</th>
-                            <th>Pogledaj detalje</th>
-                            <!--                    <th>Izbrisi</th>-->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="invoiceBuying : ${invoiceBuyings}">
-                            <td th:text="${invoiceBuying.id}"></td>
-                            <td th:text="${#dates.format(invoiceBuying.invoiceDate, 'yyyy-MM-dd')}"></td>
-                            <td th:text="${invoiceBuying.invoiceStatus.description}"></td>
-                            <td th:text="${invoiceBuying.supplier.fullName}"></td>
-                            <!--                            <td th:text="${jobTitle.details}"></td>-->
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Datum kreiranja</th>
+                                <th>Status</th>
+                                <th>Dobavljac</th>
+                                <!--                            <th>Dodaj proizvode</th>-->
+                                <th>Dodaj proizvode</th>
+                                <th>Izmeni</th>
+                                <th>Pogledaj detalje</th>
+                                <!--                    <th>Izbrisi</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="invoiceBuying : ${invoiceBuyings}">
+                                <td th:text="${invoiceBuying.id}"></td>
+                                <td th:text="${#dates.format(invoiceBuying.invoiceDate, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${invoiceBuying.invoiceStatus.description}"></td>
+                                <td th:text="${invoiceBuying.supplier.fullName}"></td>
+                                <!--                            <td th:text="${jobTitle.details}"></td>-->
 
-                            <!--                            <td><a th:href="@{/invoice/textile/Edit/(id=${invoiceBuying.id})}"-->
-                            <!--                                   class="btn btn-default">Dodaj proizvode</a></td>-->
+                                <!--                            <td><a th:href="@{/invoice/textile/Edit/(id=${invoiceBuying.id})}"-->
+                                <!--                                   class="btn btn-default">Dodaj proizvode</a></td>-->
 
-                            <td><a th:href="@{/invoiceb/textile/Edit/(id=${invoiceBuying.id})}"
-                                   class="btn btn-default">Dodaj proizvode</a></td>
+                                <td><a th:href="@{/invoiceb/textile/Edit/(id=${invoiceBuying.id})}"
+                                       class="btn btn-default">Dodaj proizvode</a></td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                       th:href="@{/invoicesBuying/findById/(id=${invoiceBuying.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary"
+                                           th:href="@{/invoicesBuying/findById/(id=${invoiceBuying.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/invoicesBuying/findById/(id=${invoiceBuying.id})}">Detalji</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/invoicesBuying/findById/(id=${invoiceBuying.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-                            <!--                    <td>-->
-                            <!--                        <div class="btn-group">-->
-                            <!--                            <a id="deleteButton" class="btn btn-danger" th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>-->
-                            <!--                        </div>-->
-                            <!--                    </td>-->
-                        </tr>
-                        </tbody>
-                    </table>
+                                <!--                    <td>-->
+                                <!--                        <div class="btn-group">-->
+                                <!--                            <a id="deleteButton" class="btn btn-danger" th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>-->
+                                <!--                        </div>-->
+                                <!--                    </td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo"> Nova faktura
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -569,18 +574,18 @@
                             <td width="50%" style="padding-left:10px">
 
 
-<!--                                <div class="form-group row">-->
-<!--                                    <label for="ddlItemsAdd" class="col-sm-4 col-form-label">Proizvod</label>-->
-<!--                                    <div class="col-sm-6">-->
-<!--                                        <select class="form-control" id="ddlItemsAdd" name="textileid">-->
-<!--                                            <option>Proizvodi:</option>-->
-<!--                                            <option th:each="textile : ${textiles}"-->
-<!--                                                    th:value="${textile.id}"-->
-<!--                                                    th:text="${textile.uniqueCode}+' '+ ${textile.textileType.description}">-->
-<!--                                            </option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <!--                                <div class="form-group row">-->
+                                <!--                                    <label for="ddlItemsAdd" class="col-sm-4 col-form-label">Proizvod</label>-->
+                                <!--                                    <div class="col-sm-6">-->
+                                <!--                                        <select class="form-control" id="ddlItemsAdd" name="textileid">-->
+                                <!--                                            <option>Proizvodi:</option>-->
+                                <!--                                            <option th:each="textile : ${textiles}"-->
+                                <!--                                                    th:value="${textile.id}"-->
+                                <!--                                                    th:text="${textile.uniqueCode}+' '+ ${textile.textileType.description}">-->
+                                <!--                                            </option>-->
+                                <!--                                        </select>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
 
 
                                 <div class="form-group row">
@@ -607,13 +612,13 @@
                                     </div>
                                 </div>
 
-<!--                                <div class="form-group row">-->
-<!--                                    <label for="txtTotalCostAdd" class="col-sm-4 col-form-label">Iznos</label>-->
-<!--                                    <div class="col-sm-6">-->
-<!--                                        <input type="number" class="form-control" id="txtTotalCostAdd" name="totalCost"-->
-<!--                                               placeholder="Iznos" required>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <!--                                <div class="form-group row">-->
+                                <!--                                    <label for="txtTotalCostAdd" class="col-sm-4 col-form-label">Iznos</label>-->
+                                <!--                                    <div class="col-sm-6">-->
+                                <!--                                        <input type="number" class="form-control" id="txtTotalCostAdd" name="totalCost"-->
+                                <!--                                               placeholder="Iznos" required>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                             </td>
                         </tr>
                     </table>
@@ -682,18 +687,18 @@
                         </div>
                     </div>
 
-<!--                    <div class="form-group row">-->
-<!--                        <label for="ddlItemsEdit" class="col-sm-4 col-form-label">Proizvod</label>-->
-<!--                        <div class="col-sm-6">-->
-<!--                            <select class="form-control" id="ddlItemsEdit" name="textileid">-->
-<!--                                <option>Proizvodi:</option>-->
-<!--                                <option th:each="textile : ${textiles}"-->
-<!--                                        th:value="${textile.id}"-->
-<!--                                        th:text="${textile.uniqueCode} +' '+ ${textile.textileType.description}">-->
-<!--                                </option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="form-group row">-->
+                    <!--                        <label for="ddlItemsEdit" class="col-sm-4 col-form-label">Proizvod</label>-->
+                    <!--                        <div class="col-sm-6">-->
+                    <!--                            <select class="form-control" id="ddlItemsEdit" name="textileid">-->
+                    <!--                                <option>Proizvodi:</option>-->
+                    <!--                                <option th:each="textile : ${textiles}"-->
+                    <!--                                        th:value="${textile.id}"-->
+                    <!--                                        th:text="${textile.uniqueCode} +' '+ ${textile.textileType.description}">-->
+                    <!--                                </option>-->
+                    <!--                            </select>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                     <div class="form-group">
                         <label for="specialRemarksEdit" class="col-form-label">Detalji/Napomena</label>
@@ -701,10 +706,10 @@
                                   required></textarea>
                     </div>
 
-<!--                    <div class="form-group">-->
-<!--                        <label for="totalCostEdit" class="col-form-label">Iznos</label>-->
-<!--                        <input type="number" class="form-control" id="totalCostEdit" name="totalCost" required>-->
-<!--                    </div>-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label for="totalCostEdit" class="col-form-label">Iznos</label>-->
+                    <!--                        <input type="number" class="form-control" id="totalCostEdit" name="totalCost" required>-->
+                    <!--                    </div>-->
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Sacuvaj izmene</button>

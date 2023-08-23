@@ -435,12 +435,9 @@
                 </div>
             </div>
             <!-- page start-->
+
+            <div class="table-container">
             <h1> Lista naziva i opisa radnih mesta</h1>
-
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Novo radno mesto
-            </button>
 
             <div th:switch="${jobTitles}">
                 <h2 th:case="null">Ne postoji ni jedan naziv/opis radnog mesta!</h2>
@@ -485,6 +482,12 @@
                         </tbody>
                     </table>
 
+                    <div class="button-container">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                            data-whatever="@mdo">Novo radno mesto
+                    </button>
+                    </div>
+                </div>
                 </div>
             </div>
 

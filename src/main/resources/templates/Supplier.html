@@ -435,62 +435,64 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista dobavljaca</h1>
+            <div class="table-container">
+                <h1> Lista dobavljaca</h1>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Dodaj dobavljaca
-            </button>
+                <div th:switch="${suppliers}">
+                    <h2 th:case="null">Ne postoji ni jedan dobavljac!</h2>
+                    <div th:case="*">
 
-            <div th:switch="${suppliers}">
-                <h2 th:case="null">Ne postoji ni jedan dobavljac!</h2>
-                <div th:case="*">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ime i prezime</th>
+                                <th>Naziv firme</th>
+                                <th>Region/drzava</th>
+                                <th>Izmeni</th>
+                                <th>Pogledaj detalje</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="supplier : ${suppliers}">
+                                <td th:text="${supplier.id}"></td>
+                                <td th:text="${supplier.fullName}"></td>
+                                <td th:text="${supplier.companyName}"></td>
+                                <td th:text="${supplier.location.country.name}"></td>
+                                <!--                    <td th:text="${jobTitle.details}"></td>-->
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/suppliers/findById/(id=${supplier.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ime i prezime</th>
-                            <th>Naziv firme</th>
-                            <th>Region/drzava</th>
-                            <th>Izmeni</th>
-                            <th>Pogledaj detalje</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="supplier : ${suppliers}">
-                            <td th:text="${supplier.id}"></td>
-                            <td th:text="${supplier.fullName}"></td>
-                            <td th:text="${supplier.companyName}"></td>
-                            <td th:text="${supplier.location.country.name}"></td>
-                            <!--                    <td th:text="${jobTitle.details}"></td>-->
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" th:href="@{/suppliers/findById/(id=${supplier.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/suppliers/findById/(id=${supplier.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/suppliers/findById/(id=${supplier.id})}">Detalji</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Dodaj dobavljaca
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- page end-->
         </section>
     </section>

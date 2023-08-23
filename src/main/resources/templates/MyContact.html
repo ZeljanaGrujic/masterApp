@@ -435,64 +435,66 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista kontakta</h1>
+            <div class="table-container">
+                <h1> Lista kontakta</h1>
+                <div th:switch="${contacts}">
+                    <h2 th:case="null">Ne postoji ni jedan kontakt!</h2>
+                    <div th:case="*">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ime</th>
+                                <th>Prezime</th>
+                                <th>Telefon</th>
+                                <th>E-mail</th>
+                                <!--                    <th>Napomena</th>-->
+                                <!--                    <th>Izmeni</th>-->
+                                <th>Pogledaj detalje</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="contact : ${contacts}">
+                                <td th:text="${contact.id}"></td>
+                                <td th:text="${contact.firstname}"></td>
+                                <td th:text="${contact.lastname}"></td>
+                                <td th:text="${contact.phone}"></td>
+                                <td th:text="${contact.email}"></td>
+                                <!--                    <td th:text="${contact.remarks}"></td>-->
+                                <!--                    <td th:text="${jobTitle.details}"></td>-->
+                                <!--                    <td>-->
+                                <!--                        <div class="btn-group">-->
+                                <!--                            <a class="btn btn-primary" th:href="@{/contact/findById/(id=${client.id})}" id="editButton">Izmeni</a>-->
+                                <!--                        </div>-->
+                                <!--                    </td>-->
 
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/contacts/findById/(id=${contact.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Novi kontakt
-            </button>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/contacts/deleteById/(id=${contact.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-            <div th:switch="${contacts}">
-                <h2 th:case="null">Ne postoji ni jedan kontakt!</h2>
-                <div th:case="*">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Ime</th>
-                            <th>Prezime</th>
-                            <th>Telefon</th>
-                            <th>E-mail</th>
-                            <!--                    <th>Napomena</th>-->
-                            <!--                    <th>Izmeni</th>-->
-                            <th>Pogledaj detalje</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="contact : ${contacts}">
-                            <td th:text="${contact.id}"></td>
-                            <td th:text="${contact.firstname}"></td>
-                            <td th:text="${contact.lastname}"></td>
-                            <td th:text="${contact.phone}"></td>
-                            <td th:text="${contact.email}"></td>
-                            <!--                    <td th:text="${contact.remarks}"></td>-->
-                            <!--                    <td th:text="${jobTitle.details}"></td>-->
-                            <!--                    <td>-->
-                            <!--                        <div class="btn-group">-->
-                            <!--                            <a class="btn btn-primary" th:href="@{/contact/findById/(id=${client.id})}" id="editButton">Izmeni</a>-->
-                            <!--                        </div>-->
-                            <!--                    </td>-->
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Novi kontakt
+                            </button>
+                        </div>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/contacts/findById/(id=${contact.id})}">Detalji</a>
-                                </div>
-                            </td>
-
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/contacts/deleteById/(id=${contact.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
-
 
             <!-- page end-->
         </section>

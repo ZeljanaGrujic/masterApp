@@ -435,49 +435,55 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista kategorija proizvoda</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Dodaj kategoriju proizvoda
-            </button>
 
-            <div th:switch="${textileTypes}">
-                <h2 th:case="null">Ne postoji ni jedna kategorija proizvoda!</h2>
-                <div th:case="*">
+            <div class="table-container">
+                <h1> Lista kategorija proizvoda</h1>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Opisni naziv kategorije</th>
-                            <th>Detalji/svojstva</th>
-                            <th>Izmeni</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="textileType:${textileTypes}">
-                            <td th:text="${textileType.id}"></td>
-                            <td th:text="${textileType.description}"></td>
-                            <td th:text="${textileType.details}"></td>
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                       th:href="@{/textileTypes/findById/(id=${textileType.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/textileTypes/deleteById/(id=${textileType.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                <div th:switch="${textileTypes}">
+                    <h2 th:case="null">Ne postoji ni jedna kategorija proizvoda!</h2>
+                    <div th:case="*">
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Opisni naziv kategorije</th>
+                                <th>Detalji/svojstva</th>
+                                <th>Izmeni</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="textileType:${textileTypes}">
+                                <td th:text="${textileType.id}"></td>
+                                <td th:text="${textileType.description}"></td>
+                                <td th:text="${textileType.details}"></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary"
+                                           th:href="@{/textileTypes/findById/(id=${textileType.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/textileTypes/deleteById/(id=${textileType.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Dodaj kategoriju proizvoda
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <!-- page end-->
         </section>
     </section>

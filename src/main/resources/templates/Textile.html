@@ -435,72 +435,77 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista proizvoda</h1>
 
+            <div class="table-container">
+                <h1> Lista proizvoda</h1>
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Novi proizvod
-            </button>
+                <div th:switch="${textiles}">
+                    <h2 th:case="null">Ne postoji ni jedan proizvod!</h2>
+                    <div th:case="*">
 
-            <div th:switch="${textiles}">
-                <h2 th:case="null">Ne postoji ni jedan proizvod!</h2>
-                <div th:case="*">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Slika modela</th>
+                                <th>Id</th>
+                                <th>Kategorija</th>
+                                <th>Model</th>
+                                <th>Marka</th>
+                                <th>Jedinstveni serijski kod</th>
+                                <th>Status</th>
+                                <th>Dobavljac</th>
+                                <th>Izmeni</th>
+                                <th>Pogledaj detalje</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="textile : ${textiles}">
+                                <td>
+                                    <a id="photoButton" th:href="@{'/img/photos/' + ${textile.photo}}">
+                                        <img th:src="@{'/img/photos/' + ${textile.photo}}" width="40" height="40">
+                                    </a>
+                                </td>
+                                <td th:text="${textile.id}"></td>
+                                <td th:text="${textile.textileType.description}"></td>
+                                <td th:text="${textile.textileModel.description}"></td>
+                                <td th:text="${textile.textleMake.description}"></td>
+                                <td th:text="${textile.uniqueCode}"></td>
+                                <td th:text="${textile.textileStatus.description}"></td>
+                                <td th:text="${textile.supplier.fullName}"></td>
+                                <!--                    <td th:text="${client.surname}"></td>-->
+                                <!--                    <td th:text="${jobTitle.details}"></td>-->
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/textiles/findById/(id=${textile.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Slika modela</th>
-                            <th>Id</th>
-                            <th>Kategorija</th>
-                            <th>Model</th>
-                            <th>Marka</th>
-                            <th>Jedinstveni serijski kod</th>
-                            <th>Status</th>
-                            <th>Dobavljac</th>
-                            <th>Izmeni</th>
-                            <th>Pogledaj detalje</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="textile : ${textiles}">
-                            <td>
-                                <a id="photoButton" th:href="@{'/img/photos/' + ${textile.photo}}">
-                                    <img th:src="@{'/img/photos/' + ${textile.photo}}" width="40" height="40">
-                                </a>
-                            </td>
-                            <td th:text="${textile.id}"></td>
-                            <td th:text="${textile.textileType.description}"></td>
-                            <td th:text="${textile.textileModel.description}"></td>
-                            <td th:text="${textile.textleMake.description}"></td>
-                            <td th:text="${textile.uniqueCode}"></td>
-                            <td th:text="${textile.textileStatus.description}"></td>
-                            <td th:text="${textile.supplier.fullName}"></td>
-                            <!--                    <td th:text="${client.surname}"></td>-->
-                            <!--                    <td th:text="${jobTitle.details}"></td>-->
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" th:href="@{/textiles/findById/(id=${textile.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/textiles/findById/(id=${textile.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/textiles/findById/(id=${textile.id})}">Detalji</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/textiles/deleteById/(id=${textile.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/textiles/deleteById/(id=${textile.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Novi proizvod
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <!-- page end-->

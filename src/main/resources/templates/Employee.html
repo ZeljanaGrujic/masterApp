@@ -437,72 +437,77 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Podaci o zaposlenima</h1>
 
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Dodaj zaposlenog
-            </button>
+            <div class="table-container">
+                <h1> Podaci o zaposlenima</h1>
 
-            <div th:switch="${employees}">
-                <h2 th:case="null">Ne postoji ni jedan zaposleni!</h2>
-                <div th:case="*">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Slika zaposlenog</th>
-                            <th>Id</th>
-                            <th>Ime i prezime</th>
-                            <th>Nadimak</th>
-                            <th>Pozicija</th>
-                            <th>Adresa prebivalista</th>
-                            <th>Grad</th>
-                            <th>Izmeni</th>
-                            <th>Pogledaj detalje</th>
-                            <th>Izbrisi</th>
-                            <th>Korisnicko ime</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="employee : ${employees}">
-                            <td>
-                                <a id="photoButton" th:href="@{'/img/photos/' + ${employee.photo}}">
-                                    <img th:src="@{'/img/photos/' + ${employee.photo}}" width="40" height="40">
-                                </a>
-                            </td>
-                            <td th:text="${employee.id}"></td>
-                            <td th:text="${employee.firstname} + ' ' +${employee.lastname}"></td>
-                            <!--                    <td th:text="${employee.lastname}"></td>-->
-                            <td th:text="${employee.nickname}"></td>
-                            <td th:text="${employee.jobTitle.description}"></td>
-                            <td th:text="${employee.location.address}"></td>
-                            <td th:text="${employee.location.city}"></td>
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" th:href="@{/employees/findById/(id=${employee.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                <div th:switch="${employees}">
+                    <h2 th:case="null">Ne postoji ni jedan zaposleni!</h2>
+                    <div th:case="*">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Slika zaposlenog</th>
+                                <th>Id</th>
+                                <th>Ime i prezime</th>
+                                <th>Nadimak</th>
+                                <th>Pozicija</th>
+                                <th>Adresa prebivalista</th>
+                                <th>Grad</th>
+                                <th>Izmeni</th>
+                                <th>Pogledaj detalje</th>
+                                <th>Izbrisi</th>
+                                <th>Korisnicko ime</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="employee : ${employees}">
+                                <td>
+                                    <a id="photoButton" th:href="@{'/img/photos/' + ${employee.photo}}">
+                                        <img th:src="@{'/img/photos/' + ${employee.photo}}" width="40" height="40">
+                                    </a>
+                                </td>
+                                <td th:text="${employee.id}"></td>
+                                <td th:text="${employee.firstname} + ' ' +${employee.lastname}"></td>
+                                <!--                    <td th:text="${employee.lastname}"></td>-->
+                                <td th:text="${employee.nickname}"></td>
+                                <td th:text="${employee.jobTitle.description}"></td>
+                                <td th:text="${employee.location.address}"></td>
+                                <td th:text="${employee.location.city}"></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary" th:href="@{/employees/findById/(id=${employee.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/employees/findById/(id=${employee.id})}">Detalji</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/employees/findById/(id=${employee.id})}">Detalji</a>
+                                    </div>
+                                </td>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/employees/deleteById/(id=${employee.id})}">Izbrisi</a>
-                                </div>
-                            </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/employees/deleteById/(id=${employee.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
 
-                            <td><a th:text="${employee.username} ?: 'Podesi'"
-                                   th:href="@{/employees/assignUsername/(id=${employee.id})}"></a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                <td><a th:text="${employee.username} ?: 'Podesi'"
+                                       th:href="@{/employees/assignUsername/(id=${employee.id})}"></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Dodaj zaposlenog
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -663,7 +668,7 @@
                                     <label for="ddlCountryAdd" class="col-sm-4 col-form-label">Region/Zemlja</label>
                                     <div class="col-sm-6">
                                         <select class="form-control" id="ddlCountryAdd" name="countryid">
-<!--                                            <option>Odaberi region</option>-->
+                                            <!--                                            <option>Odaberi region</option>-->
                                             <option th:each="country : ${countries}"
                                                     th:value="${country.id}"
                                                     th:text="${country.name}">
@@ -841,18 +846,18 @@
                                     </div>
 
 
-                                                                        <div class="form-group row" hidden>
-                                                                            <label for="ddlCountryEdit"
-                                                                                   class="col-sm-4 col-form-label">Region/Zemlja</label>
-                                                                            <div class="col-sm-6">
-                                                                                <select class="form-control" id="ddlCountryEdit" name="countryid">
-                                                                                    <option th:each="country : ${countries}"
-                                                                                            th:value="${country.id}"
-                                                                                            th:text="${country.name}">
-                                                                                    </option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
+                                    <div class="form-group row" hidden>
+                                        <label for="ddlCountryEdit"
+                                               class="col-sm-4 col-form-label">Region/Zemlja</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="ddlCountryEdit" name="countryid">
+                                                <option th:each="country : ${countries}"
+                                                        th:value="${country.id}"
+                                                        th:text="${country.name}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
 
 
                                     <!--                                    <div class="form-group row">-->

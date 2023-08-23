@@ -435,64 +435,70 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista klijentskih faktura</h1>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo"> Nova faktura
-            </button>
-
-            <div th:switch="${invoiceSellings}">
-                <h2 th:case="null">Ne postoji ni jedna faktura!</h2>
-                <div th:case="*">
-
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Datum kreiranja</th>
-                            <th>Status</th>
-                            <th>Klijent</th>
-                            <th>Dodaj proizvode</th>
-                            <th>Pogledaj detalje</th>
-                            <th>Izmeni</th>
-                            <!--                    <th>Izbrisi</th>-->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="invoiceSelling : ${invoiceSellings}">
-                            <td th:text="${invoiceSelling.id}"></td>
-                            <td th:text="${#dates.format(invoiceSelling.invoiceDate, 'yyyy-MM-dd')}"></td>
-                            <td th:text="${invoiceSelling.invoiceStatus.description}"></td>
-                            <td th:text="${invoiceSelling.client.fullName}"></td>
-                            <!--                            <td th:text="${jobTitle.details}"></td>-->
 
 
-                            <td><a th:href="@{/invoice/textile/Edit/(id=${invoiceSelling.id})}"
-                                   class="btn btn-default">Dodaj proizvode</a></td>
+            <div class="table-container">
+                <h1> Lista klijentskih faktura</h1>
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-success" id="detailsButton"
-                                       th:href="@{/invoicesSelling/findById/(id=${invoiceSelling.id})}">Detalji</a>
-                                </div>
-                            </td>
+                <div th:switch="${invoiceSellings}">
+                    <h2 th:case="null">Ne postoji ni jedna faktura!</h2>
+                    <div th:case="*">
 
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                       th:href="@{/invoicesSelling/findById/(id=${invoiceSelling.id})}"
-                                       id="editButton">Izmeni</a>
-                                </div>
-                            </td>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Datum kreiranja</th>
+                                <th>Status</th>
+                                <th>Klijent</th>
+                                <th>Dodaj proizvode</th>
+                                <th>Pogledaj detalje</th>
+                                <th>Izmeni</th>
+                                <!--                    <th>Izbrisi</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="invoiceSelling : ${invoiceSellings}">
+                                <td th:text="${invoiceSelling.id}"></td>
+                                <td th:text="${#dates.format(invoiceSelling.invoiceDate, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${invoiceSelling.invoiceStatus.description}"></td>
+                                <td th:text="${invoiceSelling.client.fullName}"></td>
+                                <!--                            <td th:text="${jobTitle.details}"></td>-->
 
-                            <!--                    <td>-->
-                            <!--                        <div class="btn-group">-->
-                            <!--                            <a id="deleteButton" class="btn btn-danger" th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>-->
-                            <!--                        </div>-->
-                            <!--                    </td>-->
-                        </tr>
-                        </tbody>
-                    </table>
+
+                                <td><a th:href="@{/invoice/textile/Edit/(id=${invoiceSelling.id})}"
+                                       class="btn btn-default">Dodaj proizvode</a></td>
+
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" id="detailsButton"
+                                           th:href="@{/invoicesSelling/findById/(id=${invoiceSelling.id})}">Detalji</a>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary"
+                                           th:href="@{/invoicesSelling/findById/(id=${invoiceSelling.id})}"
+                                           id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
+
+                                <!--                    <td>-->
+                                <!--                        <div class="btn-group">-->
+                                <!--                            <a id="deleteButton" class="btn btn-danger" th:href="@{/suppliers/deleteById/(id=${supplier.id})}">Izbrisi</a>-->
+                                <!--                        </div>-->
+                                <!--                    </td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo"> Nova faktura
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -560,7 +566,6 @@
                                         </select>
                                     </div>
                                 </div>
-
 
 
                             </td>

@@ -435,50 +435,53 @@
                 </div>
             </div>
             <!-- page start-->
-            <h1> Lista robnih modela</h1>
 
+            <div class="table-container">
+                <h1> Lista robnih modela</h1>
+                <div th:switch="${textileModels}">
+                    <h2 th:case="null">Ne postoji ni jedan model!</h2>
+                    <div th:case="*">
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    data-whatever="@mdo">Novi model proizvoda
-            </button>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Opisni naziv modela</th>
+                                <th>Detalji/svojstva</th>
+                                <th>Izmeni</th>
+                                <th>Izbrisi</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="textileModel:${textileModels}">
+                                <td th:text="${textileModel.id}"></td>
+                                <td th:text="${textileModel.description}"></td>
+                                <td th:text="${textileModel.details}"></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-primary"
+                                           th:href="@{/textileModels/findById/(id=${textileModel.id})}" id="editButton">Izmeni</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a id="deleteButton" class="btn btn-danger"
+                                           th:href="@{/textileModels/deleteById/(id=${textileModel.id})}">Izbrisi</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
 
-            <div th:switch="${textileModels}">
-                <h2 th:case="null">Ne postoji ni jedan model!</h2>
-                <div th:case="*">
+                        <div class="button-container">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal"
+                                    data-whatever="@mdo">Novi model proizvoda
+                            </button>
+                        </div>
 
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Opisni naziv modela</th>
-                            <th>Detalji/svojstva</th>
-                            <th>Izmeni</th>
-                            <th>Izbrisi</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="textileModel:${textileModels}">
-                            <td th:text="${textileModel.id}"></td>
-                            <td th:text="${textileModel.description}"></td>
-                            <td th:text="${textileModel.details}"></td>
-                            <td>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary"
-                                       th:href="@{/textileModels/findById/(id=${textileModel.id})}" id="editButton">Izmeni</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <a id="deleteButton" class="btn btn-danger"
-                                       th:href="@{/textileModels/deleteById/(id=${textileModel.id})}">Izbrisi</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
-
 
             <!-- page end-->
         </section>
